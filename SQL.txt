@@ -1,0 +1,21 @@
+CREATE TABLE gsacf_d07_26.cafe_table
+  (col_name data_type, ..., 
+   FOREIGN KEY [index_name] (col_name, ...) 
+   REFERENCES tbl_name (col_name, ...))
+
+
+SELECT E.id, A.kind_cd, A.kind_nm, B.coffee_id, B.coffee_nm, C.brend_cd, C.brend_nm, D.hot_cd, C.brend_price, A.count, (A.count *  C.brend_price) price ,E. memo
+FROM cofe_table E, kind_table A, coffee_table B, brend_table C, hot_table D
+WHERE
+(E.kind = A.kind.cd) AND
+(E.coffee = B.coffee.cd) AND
+(E.brend = C.brend.cd) AND
+(E.hot = D.hot.cd) 
+ORDER BY E.id
+
+
+INSERT INTO `coffee_table`(`coffee_cd`, `coffee_nm`) VALUES ("001","珈琲"), ("002","紅茶"), ("003","フレッシュジュース"), ("004","ミルク");
+
+INSERT INTO `brend_table`(`brend_cd`, `brend_nm`) VALUES ("001","ブレンド"), ("002","アイスコーヒー"), ("003","カプチーノ"), ("004","カフェラテ");
+
+
